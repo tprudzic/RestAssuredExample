@@ -19,14 +19,13 @@ public class SimpleRestAssuredTest {
     private static final String GENDER = "male";
     private static String email;
     private static final String STATUS = "active";
-    private static JSONObject requestParams;
     private static RequestSpecification request;
 
     @BeforeAll
     static void testPrepare() throws JSONException{
         email = EmailGenerator.generateEmail(EmailCases.VALID, false);
 
-        requestParams = new JSONObject();
+        JSONObject requestParams = new JSONObject();
         requestParams.put("email", email);
         requestParams.put("name", NAME);
         requestParams.put("gender", GENDER);
