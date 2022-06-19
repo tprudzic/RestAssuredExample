@@ -7,10 +7,21 @@ trigger:
 - master
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: windows-latest
+  task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'clean test'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
 
 steps:
-- script: echo Hello, world!
+- script: echo Hello, world! tprudzic
   displayName: 'Run a one-line script'
 
 - script: |
